@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIYA MALIK | Secure Access</title>
+
+<!-- META PIXEL CODE -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2247834615694199');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2247834615694199&ev=PageView&noscript=1"/>
+</noscript>
+<!-- END META PIXEL -->
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Courier New', monospace;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+body{
+  background:#000;
+  color:#00ff9c;
+  display:flex;
+  justify-content:center;
+  padding:20px 10px;
+}
+
+.container{
+  width:100%;
+  max-width:380px;
+  background:#020b10;
+  border-radius:26px;
+  box-shadow:0 0 45px rgba(0,255,156,.35);
+  overflow:hidden;
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.header{
+  text-align:center;
+  padding:30px 20px;
+  position:relative;
+  border-bottom:1px solid rgba(0,255,156,.2);
+}
+
+.online-dot{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:12px;
+  height:12px;
+  background:#00ff9c;
+  border-radius:50%;
+  box-shadow:0 0 15px #00ff9c;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 rgba(0,255,156,.7)}
+  70%{box-shadow:0 0 18px rgba(0,255,156,0)}
+  100%{box-shadow:0 0 0 rgba(0,255,156,0)}
+}
+
+.profile-wrap{
+  width:110px;
+  height:110px;
+  margin:0 auto 14px;
+  padding:3px;
+  border-radius:50%;
+  background:#00ff9c;
+  box-shadow:0 0 25px rgba(0,255,156,.6);
+}
+
+.profile{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:url("profile.jpg") center/cover no-repeat;
+  border:2px solid #000;
+}
+
+.glitch{
+  font-size:26px;
+  margin-top:8px;
+  letter-spacing:2px;
+  animation:glitch 2s infinite;
+}
+
+@keyframes glitch{
+  0%{text-shadow:2px 0 red,-2px 0 cyan}
+  20%{text-shadow:-2px 0 red,2px 0 cyan}
+  40%{text-shadow:2px 2px red,-2px -2px cyan}
+  60%{text-shadow:-2px -2px red,2px 2px cyan}
+  100%{text-shadow:0 0 10px #00ff9c}
+}
+
+/* SUB NAME */
+.sub-wrap{
+  margin-top:8px;
+  font-size:13px;
+  letter-spacing:2px;
+  color:#00ff9c;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  text-shadow:0 0 10px rgba(0,255,156,.6);
+}
+
+.cursor{animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0}}
+
+.certified{
+  padding:3px 8px;
+  border:1px solid #00ff9c;
+  border-radius:12px;
+  font-size:11px;
+  box-shadow:0 0 10px rgba(0,255,156,.5);
+}
+
+.tags{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:12px;
+}
+
+.tag{
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid #00ff9c;
+  font-size:13px;
+  box-shadow:0 0 8px rgba(0,255,156,.5);
+}
+
+.content{padding:20px;}
+
+.info{
+  border:1px dashed #00ff9c;
+  border-radius:14px;
+  padding:12px;
+  font-size:13px;
+  text-align:center;
+  margin-bottom:16px;
+}
+
+.stats{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.stat{
+  flex:1;
+  border:1px solid #00ff9c;
+  border-radius:16px;
+  padding:14px;
+  text-align:center;
+}
+
+/* 🔥 WHATSAPP BUTTON ADVANCED */
+.whatsapp{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px;
+  margin-bottom:18px;
+  border-radius:18px;
+  background:#25D366;
+  color:#000;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 0 35px #25D366;
+  animation:pulseBtn 1.6s infinite, floatBtn 3s ease-in-out infinite;
+  position:relative;
+  overflow:hidden;
+}
+
+.whatsapp::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:shine 2.5s infinite;
+}
+
+@keyframes shine{
+  to{left:100%}
+}
+
+@keyframes pulseBtn{
+  0%{box-shadow:0 0 15px #25D366}
+  100%{box-shadow:0 0 45px #25D366}
+}
+
+@keyframes floatBtn{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+
+.whatsapp:hover{
+  transform:scale(1.05);
+}
+
+.whatsapp svg{
+  width:26px;
+  height:26px;
+}
+
+.price-glass{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(0,255,156,.4);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:18px;
+}
+
+.price-glass h3{
+  text-align:center;
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+.price-item{
+  display:flex;
+  justify-content:space-between;
+  padding:6px 0;
+  font-size:14px;
+  border-bottom:1px dashed rgba(0,255,156,.3);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.feature{
+  border:1px solid #00ff9c;
+  border-radius:14px;
+  padding:10px 6px;
+  font-size:12px;
+  text-align:center;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+  <div class="header">
+    <div class="online-dot"></div>
+
+    <div class="profile-wrap"><div class="profile"></div></div>
+
+    <div class="glitch">DIYA MALIK</div>
+
+    <div class="sub-wrap">
+      <span id="typing"></span><span class="cursor">▌</span>
+      <span class="certified">🛡️ CERTIFIED</span>
+    </div>
+
+    <div class="tags">
+      <div class="tag">⚡ POWER</div>
+      <div class="tag">🧠 EXPERT</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="info">⚠️ अपने पार्टनर की जासूसी करें, बिना उसे पता चले</div>
+
+    <div class="stats">
+      <div class="stat"><h3>94K+</h3><p>ACTIVE</p></div>
+      <div class="stat"><h3>4.2★</h3><p>RATING</p></div>
+    </div>
+
+    <a class="whatsapp"
+       onclick="fbq('track','Lead');"
+       href="https://wa.me/+917231816389?text=नमस्ते,%20मुझे%20इस%20सर्विस%20के%20बारे%20में%20जानकारी%20चाहिए">
+
+      <!-- WhatsApp SVG Logo -->
+      <svg viewBox="0 0 32 32" fill="currentColor">
+        <path d="M16.003 3.2C9.372 3.2 4 8.573 4 15.205c0 2.688.705 5.311 2.044 7.621L4 29l6.344-2.022a12.012 12.012 0 0 0 5.659 1.433h.005c6.63 0 12.003-5.373 12.003-12.006C28.01 8.573 22.636 3.2 16.003 3.2zm6.59 17.24c-.276.777-1.612 1.492-2.221 1.582-.58.086-1.303.123-2.1-.134-.485-.154-1.106-.358-1.91-.704-3.355-1.447-5.545-4.833-5.713-5.059-.167-.226-1.365-1.815-1.365-3.463 0-1.648.865-2.459 1.17-2.792.304-.333.665-.416.887-.416.222 0 .443.002.637.01.205.009.48-.078.752.574.276.665.94 2.292 1.022 2.458.085.167.14.37.028.597-.111.226-.166.369-.333.567-.166.197-.35.441-.499.592-.167.167-.34.35-.146.685.195.333.867 1.432 1.861 2.32 1.278 1.141 2.355 1.493 2.688 1.66.333.167.527.14.722-.083.194-.226.833-.97 1.055-1.304.222-.333.444-.277.75-.166.305.111 1.944.916 2.276 1.083.333.167.555.25.637.39.083.139.083.804-.194 1.582z"/>
+      </svg>
+
+      MESSAGE ON WHATSAPP
+    </a>
+
+    <div class="price-glass">
+      <h3>💰 PRICE LIST</h3>
+      <div class="price-item"><span>WhatsApp</span><span>₹299</span></div>
+      <div class="price-item"><span>Facebook</span><span>₹199</span></div>
+      <div class="price-item"><span>Instagram</span><span>₹199</span></div>
+      <div class="price-item"><span>Snapchat</span><span>₹199</span></div>
+      <div class="price-item"><span>Call Details</span><span>₹499</span></div>
+      <div class="price-item"><span>Full Phone Access</span><span>₹999</span></div>
+    </div>
+
+    <div class="features">
+      <div class="feature">✔ VERIFIED</div>
+      <div class="feature">🔒 SECURE</div>
+      <div class="feature">📊 DATA</div>
+      <div class="feature">🏆 TRUSTED</div>
+    </div>
+
+    <div class="footer">100% Safe and Secure Platform</div>
+  </div>
+</div>
+
+<script>
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=Array(Math.floor(columns)).fill(1);
+setInterval(()=>{
+  ctx.fillStyle="rgba(0,0,0,0.08)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#00ff9c";
+  ctx.font=fontSize+"px monospace";
+  drops.forEach((y,i)=>{
+    ctx.fillText(chars[Math.random()*chars.length|0],i*fontSize,y*fontSize);
+    if(y*fontSize>canvas.height && Math.random()>0.95) drops[i]=0;
+    drops[i]++;
+  });
+},33);
+
+/* TYPING */
+const text="CYBER EXPERT";
+let i=0;
+const el=document.getElementById("typing");
+(function type(){
+  if(i<text.length){
+    el.innerHTML+=text[i++];
+    setTimeout(type,120);
+  }
+})();
+</script>
+
+</body>
+</html>
